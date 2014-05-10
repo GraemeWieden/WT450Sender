@@ -22,7 +22,7 @@ the protocol information and packet content for the WT450.
 
 The following information is an abbreviated version of material from
 http://ala-paavola.fi/jaakko/doku.php?id=wt450h
-
+```
 +---+   +---+   +-------+       +  high
 |   |   |   |   |       |       |
 |   |   |   |   |       |       |
@@ -32,7 +32,7 @@ http://ala-paavola.fi/jaakko/doku.php?id=wt450h
 |   1   |   1   |   0   |   0   |  translates as
 
 Each transmission is 36 bits long (i.e. 72 ms)
-
+```
 Example transmission (House 1, Channel 1, RH 59 %, Temperature 23.5 °C)
 110000010011001110110100100110011000
 
