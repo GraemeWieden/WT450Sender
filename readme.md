@@ -1,7 +1,7 @@
 WT450 Sender Library for Arduino
 ================================
 
-This small library allows an Arduino to emulate the WT450 temperature and humidity sender. This is the same model as the standard Ninja Blocks temperature and humidity sensor.
+This library allows an Arduino to emulate the WT450 temperature and humidity sender. This is the same model as the standard Ninja Blocks temperature and humidity sensor.
 
 You can use the WT450Sender library to send a custom WT450 packet. The following details can be specified specifying:
 
@@ -30,9 +30,31 @@ The first sets up the object with default paramaters of:
 - House Code 1
 - Channel 1
 
+The second constructor allows you to specify the transmit pin, the house code and the channel as arguments. If you use the first constructor, you can also manually setup these values with the setup function: 
+
+```
+void setup(byte txPin, byte houseCode, byte channel);
+```
+
+Sending the data
+----------------
+To transmit the humidity and temperature use the send function:
+
+```
+void send(byte humidity, double temperature);
+```
+
+By default, the data packet will be sent three times. This can be changed using the setRepeats function:
+
+```
+void setRepeats(byte repeats);
+```
+Examples
+--------
+For an example of how to use the WT450Sender library, take a look at the Send_WT450 Arduino sketch in the examples folder.
 
 
-The RF protocol
+The WT450 RF protocol
 ---------------
 
 Send WT450 protocol packets through an RF transmitter.
@@ -85,4 +107,4 @@ The parity description didn't make sense to me so after some testing it turns ou
 
 Acknowledgements
 ----------------
-Thanks to Jaakko Ala-Paavola for the work he and his colleagues did in decoding and publishing the WT450 protocol and also for allowing me to include those details in this utility.
+Thanks to Jaakko Ala-Paavola for the work he and his colleagues did in decoding and publishing the WT450 protocol and also for allowing me to include those details in this library.
