@@ -57,8 +57,6 @@ For an example of how to use the WT450Sender library, take a look at the Send_WT
 The WT450 RF protocol
 ---------------
 
-Send WT450 protocol packets through an RF transmitter.
-
 Thanks to Jaakko Ala-Paavola and colleagues for sharing the protocol information and packet content for the WT450.
 
 The following information is an abbreviated version of material from 
