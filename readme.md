@@ -3,7 +3,7 @@ WT450 Sender Library for Arduino
 
 This library allows an Arduino to emulate the WT450 temperature and humidity sender. This is the same model as the standard Ninja Blocks temperature and humidity sensor.
 
-You can use the WT450Sender library to send a custom WT450 packet. The following details can be specified specifying:
+You can use the WT450Sender library to send a custom WT450 packet. The following details can be specified:
 
 - House Code (1 to 15)
 - Channel (1 to 4)
