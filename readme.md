@@ -3,25 +3,46 @@ WT450 Sender Library for Arduino
 
 This small library allows an Arduino to emulate the WT450 temperature and humidity sender. This is the same model as the standard Ninja Blocks temperature and humidity sensor.
 
-By default the transmitter data pin should be connected to the Arduino digital pin 9.
-
-Use the sendWT450Packet to send a custom packet specifying:
+You can use the WT450Sender library to send a custom WT450 packet. The following details can be specified specifying:
 
 - House Code (1 to 15)
 - Channel (1 to 4)
 - Humidity (0 to 127)
-- Temperature (floating point 0 to 205)
+- Temperature (floating point -50 to 205)
+- Transmit pin
+- Number of packet repeats
+
+Constructing the WT450Sender object
+-----------------------------------
+Two constructors are provided:
+
+```
+  WT450Sender();
+```
+
+```
+  WT450Sender(byte txPin, byte houseCode, byte channel);
+```
+
+The first sets up the object with default paramaters of:
+
+- Transmit pin 2
+- House Code 1
+- Channel 1
 
 
-WT450 Emulator
+
+The RF protocol
+---------------
 
 Send WT450 protocol packets through an RF transmitter.
 
-Thanks to Jaakko Ala-Paavola and colleagues for sharing
-the protocol information and packet content for the WT450.
+Thanks to Jaakko Ala-Paavola and colleagues for sharing the protocol information and packet content for the WT450.
 
-The following information is an abbreviated version of material from
+The following information is an abbreviated version of material from 
+
 http://ala-paavola.fi/jaakko/doku.php?id=wt450h
+
 ```
 +---+   +---+   +-------+       +  high
 |   |   |   |   |       |       |
@@ -32,7 +53,7 @@ http://ala-paavola.fi/jaakko/doku.php?id=wt450h
 |   1   |   1   |   0   |   0   |  translates as
 
 Each transmission is 36 bits long (i.e. 72 ms)
-```
+
 Example transmission (House 1, Channel 1, RH 59 %, Temperature 23.5 °C)
 110000010011001110110100100110011000
 
@@ -54,16 +75,12 @@ rh, t  = relative humidity, temperature
 p      = parity bit
 
 The temperature is transmitted as (temp + 50.0) * 128,
+```
 
--------------------------------------------------------------------
+Additional Notes on the protocol
+--------------------------------
 Some additional things I've discovered from sampling transmissions:
-The parity description didn't make sense to me so after some testing
-it turns out that it's a simple even parity bit. This has the added
-benefit of leaving the transmission in a low state at the end of the
-final bit. To 'complete' the packet, a 500 μs pulse is sent.
-I also believe the 1100 preamble could be used to allow devices to 
-determine the pulse durations for long and short pulses.
-
+The parity description didn't make sense to me so after some testing it turns out that it's a simple even parity bit. This has the added benefit of leaving the transmission in a low state at the end of the final bit. To 'complete' the packet, a 500 μs pulse is sent. I also believe the 1100 preamble is probably used to allow devices to determine the pulse durations for long and short pulses.
 
 
 Acknowledgements
