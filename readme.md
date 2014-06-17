@@ -57,6 +57,9 @@ Examples
 --------
 For an example of how to use the WT450Sender library, take a look at the `Send_WT450` Arduino sketch in the `examples` folder.
 
+For a complete step-by-step walkthrough of using this library to build your own temperature and humidity sender, take a look at the project page here:
+
+http://graemewieden.github.io/temp_hum_sender/
 
 The WT450 RF protocol
 ---------------
